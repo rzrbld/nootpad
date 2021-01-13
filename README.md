@@ -4,13 +4,14 @@
  ![screenshot1](https://github.com/rzrbld/honk/raw/main/images/screen.png)
 
  by now:
- - literally same build-it scripts
+ - literally the same build-in snippets
  - user snippets temporary not available
 
 ## how to develop snippet
 
 look at `src/scripts/Test.js`. In this case - only difference between [Honk](https://github.com/rzrbld/honk) and [Boop](https://github.com/IvanMathy/Boop) is:
 
+export declaration:
 ```
 module.exports ={
 	main
