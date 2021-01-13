@@ -1,0 +1,124 @@
+{
+  "name": "honk",
+  "version": "1.0.0",
+  "description": "boop analog",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "lint": "eslint src"
+  },
+  "author": "rzrbld",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "extraResource": [
+          "./scripts/"
+        ],
+        "icon": "./icons/honk"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "name": "Honk"
+          },
+          "platforms": [
+            "linux"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "config": {
+            "name": "Honk",
+            "icon": "./icons/honk"
+          },
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "format": "ULFO"
+          },
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {
+            "name": "Honk"
+          },
+          "platforms": [
+            "linux"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "Honk"
+          },
+          "platforms": [
+            "win32"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-appx",
+          "config": {
+            "packageName": "Honk",
+            "name": "Honk"
+          },
+          "platforms": [
+            "win32"
+          ]
+        }
+      ],
+      "publishers": [
+        {
+          "config": {
+            "repository": {
+              "name": "Honk",
+              "owner": "rzrbld"
+            }
+          },
+          "name": "@electron-forge/publisher-github",
+          "platforms": [
+            "linux",
+            "win32",
+            "darwin"
+          ]
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-appx": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "@electron-forge/publisher-github": "^6.0.0-beta.54",
+    "electron": "^11.1.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "animate.css": "^4.1.1",
+    "autocompleter": "^6.1.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-window-state": "^5.0.3",
+    "he": "^1.2.0",
+    "js-base64": "^3.6.0",
+    "js-yaml": "^4.0.0",
+    "jshashes": "^1.0.8",
+    "lodash": "^4.17.20",
+    "monaco-editor": "^0.21.2",
+    "pretty-data": "^0.40.0"
+  }
+}

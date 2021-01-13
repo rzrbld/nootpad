@@ -1,0 +1,18 @@
+/**
+    {
+        "api":1,
+        "name":"Markdown Quote",
+        "description":"Adds > to the start of every line of your text.",
+        "author":"Dan2552",
+        "icon":"term",
+        "tags":"quote,markdown"
+    }
+**/
+
+const main = function(input){
+    return input.text = input.text.split("\n").map(line => "> " + line).join("\n");
+}
+
+module.exports ={
+	main
+}

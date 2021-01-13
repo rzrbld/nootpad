@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+input:focus{
+  outline: none;
+}
+
+#searchfield {
+  width: 400px; 
+  padding:1em; 
+  font-size:1.3rem; 
+  border-radius:10px; 
+  border-width:0px; 
+  border-style:hidden; 
+  background-color:#141314; 
+  border-color:#000000; 
+  color:#e6e6e6; 
+  box-shadow: 0px 0px 10px 0px rgba(14, 13, 13, 0.75); 
+}
+
+.pasteInfo {
+  min-width: 549px;
+  max-width: 550px;
+  width: auto;
+  background-color: rgba(41, 41, 41, 1);
+}
+
+.autocomplete-container{
+  border: none !important;
+  border-radius: 0px 0px 10px 10px;
+  border-width:0px; 
+  border-style:hidden; 
+  background-color:#141314 !important; 
+  border-color:#000000 !important; 
+  box-shadow: 0px 0px 10px 0px rgba(14, 13, 13, 0.75); 
+}
+
+.suggest-item {
+  padding-top: 0.3rem !important;
+  display: flex;
+  width: 100%;
+  background-color:#141314; 
+  border-width:0px; 
+  border-style:hidden; 
+  border-color:#000000; 
+}
+
+.suggest-item:hover {
+  background-color:rgb(30,91,200) !important;
+}
+
+.autocomplete > div.selected {
+  background-color: rgb(30,91,200) !important;
+}
+
+.autocomplete > div.selected > div.child > div.suggest-description {
+  color: rgb(22, 22, 22) !important;
+}
+
+.autocomplete > div.selected > div.child:first-child > .suggest-icon {
+  color:#cccccc !important;  
+}
+
+.suggest-item:hover > div.child > div.suggest-description {
+  color: rgb(22, 22, 22) !important;
+}
+
+.suggest-item:hover > div.child:first-child > .suggest-icon {
+  color:#cccccc !important;  
+}
+
+.child {
+  flex: 1;
+}
+
+.child:first-child {
+  margin-right: 3px;
+  max-width: 2rem;
+  text-align: center;
+} 
+
+.suggest-icon {
+  padding-top: 0.6rem;
+  color:rgba(146, 146, 146, 1)
+}
+
+.suggest-title {
+  color:#cccccc; 
+  font-size: 1.2rem !important; 
+}
+
+.suggest-description {
+  color:rgba(73, 73, 73, 1);
+  font-size: 0.8rem !important;
+}
+
+#container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.monaco-editor {
+  height: 100%;
+  width: 100%;
+}
+
+#titlebar {
+  width: 100vw;
+  height: 2em;
+  background-color: #1e1e1e;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-app-region: drag;
+  padding: 8px 0 0 10px;
+  text-align: center;
+}
+
+#titlebar>div {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #cccccc;
+  border-radius: 0.3rem;
+  padding: 0.1rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  font-size: 0.75rem;
+}
+
+#save {
+    background-color: #569CD6; /* Green */
+    border: none;
+    color: white;
+    padding: 2px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#save:hover {
+  background-color: #76afde;
+  cursor: pointer;
+}
