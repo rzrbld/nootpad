@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
     "package": "electron-forge package",
+    "publish": "electron-forge publish",
     "make": "electron-forge make",
     "lint": "eslint src"
   },
@@ -14,9 +15,13 @@
   "license": "MIT",
   "config": {
     "forge": {
+      "electronPackagerConfig": {
+          "icon": "./icons/honk"
+      },
       "packagerConfig": {
         "extraResource": [
-          "./scripts/"
+          "./scripts/",
+          "./icons/"
         ],
         "icon": "./icons/honk"
       },
@@ -24,7 +29,33 @@
         {
           "name": "@electron-forge/maker-deb",
           "config": {
-            "name": "Honk"
+            "name": "Honk",
+            "options":{
+              "icon":"icons/Icon-512.png",
+              "categories": [
+                "Utility"
+              ]
+            }
+          },
+          "platforms": [
+            "linux"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-flatpak",
+          "config": {
+            "name": "Honk",
+            "options":{
+              "icon":{
+                "48x48": "icons/Icon-48.png",
+                "64x64": "icons/Icon-64.png",
+                "128x128": "icons/Icon-128.png",
+                "256x256": "icons/Icon-256.png"
+              },
+              "categories": [
+                "Utility"
+              ]
+            }
           },
           "platforms": [
             "linux"
@@ -33,8 +64,7 @@
         {
           "name": "@electron-forge/maker-zip",
           "config": {
-            "name": "Honk",
-            "icon": "./icons/honk"
+            "name": "Honk"
           },
           "platforms": [
             "darwin"
@@ -55,7 +85,7 @@
             "name": "Honk"
           },
           "platforms": [
-            "linux"
+            "none"
           ]
         },
         {
@@ -82,7 +112,7 @@
         {
           "config": {
             "repository": {
-              "name": "Honk",
+              "name": "honk",
               "owner": "rzrbld"
             }
           },
@@ -101,6 +131,7 @@
     "@electron-forge/maker-appx": "^6.0.0-beta.54",
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.54",
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",

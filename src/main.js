@@ -1,6 +1,7 @@
 const { app, BrowserWindow, Menu, MenuItem, globalShortcut  } = require('electron')
 const windowStateKeeper = require('electron-window-state');
 var ipc = require('electron').ipcMain;
+const path = require('path');
 const menu = new Menu();
 
 function createWindow () {
@@ -12,6 +13,7 @@ function createWindow () {
 
   const win = new BrowserWindow({
     title: 'Honk',
+    icon: path.join(__dirname, "icons/honk.png"),
     x: mainWindowStateKeeper.x,
     y: mainWindowStateKeeper.y,
     width: mainWindowStateKeeper.width,
@@ -25,7 +27,7 @@ function createWindow () {
   mainWindowStateKeeper.manage(win);
 
   win.loadFile('index.html')
-  
+
   // dev only
   // win.webContents.openDevTools()
 
@@ -59,7 +61,7 @@ function createMenu(win){
       {
         role: 'help',
         label: "Open Picker",
-        accelerator: process.platform === 'darwin' ? 'Alt+Cmd+B' : 'Alt+Shift+B',
+        accelerator: process.platform === 'darwin' ? 'Cmd+H' : 'Alt+H',
         click: () => {
           win.webContents.send('key', {'cmd': 'show-input'});
         }
@@ -81,7 +83,7 @@ function createMenu(win){
         }
       }]
   }))
-  
+
   Menu.setApplicationMenu(menu);
 }
 

@@ -36,7 +36,7 @@ function getSripsList(){
 
             if(file.indexOf('.js') >= 0 ){
                 var infoStr = contents.substring(
-                    contents.indexOf("/**") + 3, 
+                    contents.indexOf("/**") + 3,
                     contents.indexOf("**/")
                 );
                 var infoObj = JSON.parse(infoStr);
@@ -44,7 +44,7 @@ function getSripsList(){
                 infoObj.fileName = file;
                 infoObj.altIcon = altIcon.iconReplace(infoObj.icon);
                 allScripts.push(infoObj)
-            }   
+            }
         }
     }
     console.log("allScripts",allScripts);
@@ -59,7 +59,7 @@ function deduplicateResults(rawResults){
 
 function restoreTitle(){
     document.getElementById('pasteInfo').style.background='rgb(41, 41, 41)'
-    document.getElementById('pasteInfo').textContent="Press Alt+Shift+B to get started"
+    document.getElementById('pasteInfo').textContent="Press Alt+H to get started"
 }
 function infoTitle(text){
     document.getElementById('pasteInfo').style.background='rgb(41,107,177)'
@@ -255,7 +255,7 @@ autocomplete({
         return divContainer;
     },
     fetch: function(text, update) {
-        text = text.toLowerCase();        
+        text = text.toLowerCase();
         var suggestions = searchSnippet(text)
         update(suggestions);
     },

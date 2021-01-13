@@ -9,16 +9,16 @@ input:focus{
 }
 
 #searchfield {
-  width: 400px; 
-  padding:1em; 
-  font-size:1.3rem; 
-  border-radius:10px; 
-  border-width:0px; 
-  border-style:hidden; 
-  background-color:#141314; 
-  border-color:#000000; 
-  color:#e6e6e6; 
-  box-shadow: 0px 0px 10px 0px rgba(14, 13, 13, 0.75); 
+  width: 400px;
+  padding:1em;
+  font-size:1.3rem;
+  border-radius:10px;
+  border-width:0px;
+  border-style:hidden;
+  background-color:#141314;
+  border-color:#000000;
+  color:#e6e6e6;
+  box-shadow: 0px 0px 10px 0px rgba(14, 13, 13, 0.75);
 }
 
 .pasteInfo {
@@ -31,21 +31,22 @@ input:focus{
 .autocomplete-container{
   border: none !important;
   border-radius: 0px 0px 10px 10px;
-  border-width:0px; 
-  border-style:hidden; 
-  background-color:#141314 !important; 
-  border-color:#000000 !important; 
-  box-shadow: 0px 0px 10px 0px rgba(14, 13, 13, 0.75); 
+  border-width:0px;
+  border-style:hidden;
+  background-color:#141314 !important;
+  border-color:#000000 !important;
+  box-shadow: 0px 0px 10px 0px rgba(14, 13, 13, 0.75);
+  overflow-x: hidden !important;
 }
 
 .suggest-item {
   padding-top: 0.3rem !important;
   display: flex;
   width: 100%;
-  background-color:#141314; 
-  border-width:0px; 
-  border-style:hidden; 
-  border-color:#000000; 
+  background-color:#141314;
+  border-width:0px;
+  border-style:hidden;
+  border-color:#000000;
 }
 
 .suggest-item:hover {
@@ -61,7 +62,7 @@ input:focus{
 }
 
 .autocomplete > div.selected > div.child:first-child > .suggest-icon {
-  color:#cccccc !important;  
+  color:#cccccc !important;
 }
 
 .suggest-item:hover > div.child > div.suggest-description {
@@ -69,7 +70,7 @@ input:focus{
 }
 
 .suggest-item:hover > div.child:first-child > .suggest-icon {
-  color:#cccccc !important;  
+  color:#cccccc !important;
 }
 
 .child {
@@ -80,7 +81,7 @@ input:focus{
   margin-right: 3px;
   max-width: 2rem;
   text-align: center;
-} 
+}
 
 .suggest-icon {
   padding-top: 0.6rem;
@@ -88,8 +89,8 @@ input:focus{
 }
 
 .suggest-title {
-  color:#cccccc; 
-  font-size: 1.2rem !important; 
+  color:#cccccc;
+  font-size: 1.2rem !important;
 }
 
 .suggest-description {
