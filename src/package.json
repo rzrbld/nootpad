@@ -16,7 +16,7 @@
   "config": {
     "forge": {
       "electronPackagerConfig": {
-          "icon": "./icons/honk"
+        "icon": "./icons/honk"
       },
       "packagerConfig": {
         "extraResource": [
@@ -30,8 +30,8 @@
           "name": "@electron-forge/maker-deb",
           "config": {
             "name": "Honk",
-            "options":{
-              "icon":"icons/Icon-512.png",
+            "options": {
+              "icon": "icons/Icon-512.png",
               "categories": [
                 "Utility"
               ]
@@ -45,8 +45,8 @@
           "name": "@electron-forge/maker-flatpak",
           "config": {
             "name": "Honk",
-            "options":{
-              "icon":{
+            "options": {
+              "icon": {
                 "48x48": "icons/Icon-48.png",
                 "64x64": "icons/Icon-64.png",
                 "128x128": "icons/Icon-128.png",
