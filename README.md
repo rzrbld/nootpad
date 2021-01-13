@@ -7,7 +7,7 @@
  - literally the same build-in snippets
  - user snippets temporary not available
 
-## how to develop snippet
+## how to write a snippet
 
 look at `src/scripts/Test.js`. In this case - only difference between [Honk](https://github.com/rzrbld/honk) and [Boop](https://github.com/IvanMathy/Boop) is:
 
@@ -19,7 +19,7 @@ module.exports ={
 ```
 and `return` statement in main function.
 
-## how to develop app
+## run in dev environment
 
  - fork/download
  - run
