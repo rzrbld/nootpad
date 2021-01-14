@@ -91,7 +91,9 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "Honk"
+            "name": "Honk",
+            "authors": "rzrbld",
+            "description": "scratchpad"
           },
           "platforms": [
             "win32"
@@ -104,7 +106,7 @@
             "name": "Honk"
           },
           "platforms": [
-            "win32"
+            "none"
           ]
         }
       ],
