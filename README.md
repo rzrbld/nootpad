@@ -1,7 +1,7 @@
 # honk
  Simple scratchpad. Kind a "port" of [Boop](https://github.com/IvanMathy/Boop) for Linux and Windows platforms. Build with [Electron](https://github.com/electron/electron) and [Monaco-editor](https://microsoft.github.io/monaco-editor/).
 
- ![screenshot1](https://github.com/rzrbld/honk/raw/main/images/screen.png)
+ ![screenshot1](https://raw.githubusercontent.com/rzrbld/honk/main/images/screen.png)
 
  by now:
  - literally the same build-in snippets
