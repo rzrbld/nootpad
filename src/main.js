@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, MenuItem, globalShortcut  } = require('electron')
+const { app, BrowserWindow, Menu, MenuItem, dialog  } = require('electron')
 const windowStateKeeper = require('electron-window-state');
 var ipc = require('electron').ipcMain;
 const path = require('path');
@@ -21,7 +21,8 @@ function createWindow () {
     backgroundColor: '#1e1e1e',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true
     }
   })
   mainWindowStateKeeper.manage(win);
@@ -29,7 +30,7 @@ function createWindow () {
   win.loadFile('index.html')
 
   // dev only
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
   win.webContents.on('did-finish-load', function() {
     win.show();
@@ -57,15 +58,7 @@ function createMenu(win){
       },
       {
         role: 'quit'
-      },
-      {
-        role: 'help',
-        label: "Open Picker",
-        accelerator: process.platform === 'darwin' ? 'Cmd+H' : 'Alt+H',
-        click: () => {
-          win.webContents.send('key', {'cmd': 'show-input'});
-        }
-    }]
+      }]
   }))
 
   menu.append(new MenuItem({
@@ -84,13 +77,53 @@ function createMenu(win){
       }]
   }))
 
+  menu.append(new MenuItem({
+    label: 'Scripts',
+    submenu: [
+      {
+        role: 'help',
+        label: "Open Picker",
+        accelerator: process.platform === 'darwin' ? 'Cmd+H' : 'Alt+H',
+        click: () => {
+          win.webContents.send('key', {'cmd': 'show-input'});
+        }
+      },
+      {
+        role: 'help',
+        label: "Reload Scripts",
+        accelerator: process.platform === 'darwin' ? 'Shift+Cmd+R' : 'Shift+Ctrl+R',
+        click: () => {
+          win.webContents.send('key', {'cmd': 'ready'});
+        }
+      },
+      {
+        role: 'help',
+        label: "Set User Scipts Folder",
+        accelerator: process.platform === 'darwin' ? 'Cmd+,' : 'Alt+,',
+        click: () => {
+          var dir = dialog.showOpenDialog(win, {
+
+              properties: ['openDirectory']
+      
+          }).then((dir) => {
+            console.log("OPEN DIR>>>",dir);
+            if(dir.canceled == false){
+              win.webContents.send('key', {'cmd': 'select-custom-scripts-folder','dir': dir});
+            }
+          })
+        }
+      }]
+  }))
+
   Menu.setApplicationMenu(menu);
 }
 
 function initShortcuts(win){
-  globalShortcut.register('esc', () => {
-    win.webContents.send('key', {'cmd': 'hide-input'})
-    return true
+  win.webContents.on('before-input-event', (event, input) => {
+    if ( input.key == 'Escape') {
+      win.webContents.send('key', {'cmd': 'hide-input'})
+      event.preventDefault()
+    }
   })
 }
 
@@ -107,7 +140,7 @@ app.on('activate', () => {
 })
 
 app.on('will-quit', () => {
-  globalShortcut.unregisterAll()
+  console.log("Bye!");
 })
 
 app.whenReady().then(createWindow)

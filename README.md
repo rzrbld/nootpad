@@ -4,8 +4,12 @@
  ![screenshot1](https://raw.githubusercontent.com/rzrbld/honk/main/images/screen.png)
 
  by now:
- - literally the same build-in snippets
- - user snippets temporary not available
+ - literally the same build-in scripts
+ - user scripts support
+ 
+## installing scripts
+
+To install a new custom script - download or write your own `.js` file and put it into the custom scripts folder. You can set custom scripts folder from the `Scripts` menu
 
 ## how to write a snippet
 

@@ -8,12 +8,30 @@ const amdLoader = require('./node_modules/monaco-editor/min/vs/loader.js');
 const amdRequire = amdLoader.require;
 const amdDefine = amdLoader.require.define;
 scriptsDir = path.join(__dirname,'scripts');
+const store = require('electron-settings');
 
 var searchField = document.getElementById("searchfield");
 var searchContainer = document.getElementById('input');
 var hoverDiv = document.getElementById('hover');
+window.prefs = {}
 
 /* -- fucntions */
+
+function setPrefs(prefsObj){
+  store.setSync('preferences',prefsObj);
+  return true;
+}
+
+function getPrefs(){
+  var myPreferences = store.getSync('preferences');
+  if(myPreferences == "" || typeof myPreferences == "undefined"){
+    myPreferences = {}
+    myPreferences.customScriptFolder = "none";
+    setPrefs(myPreferences);
+  }
+  console.log("getPrefs >>>>", myPreferences, store.file());
+  return myPreferences;
+}
 
 function uriFromPath(_path) {
     var pathName = path.resolve(_path).replace(/\\/g, '/');
@@ -23,14 +41,32 @@ function uriFromPath(_path) {
     return encodeURI('file://' + pathName);
 }
 
-function getSripsList(){
+function getScriptsList(){
 
+    var embedScripts = getScripts(scriptsDir); 
+    var externalScripts = [];
+    var completeListScripts = [];
+    window.prefs = getPrefs();
+
+    console.log("Embed scripts >>> ",embedScripts);
+
+    if(window.prefs.customScriptFolder != "none" && typeof window.prefs.customScriptFolder != "undefined"){
+        var dir = window.prefs.customScriptFolder;
+        var externalScripts = getScripts(dir); 
+        console.log("External scripts >>> ",externalScripts);
+    }
+
+    completeListScripts = embedScripts.concat(externalScripts)
+    return completeListScripts;
+}
+
+function getScripts(dir){
     var allScripts = []
-    var files = fs.readdirSync(scriptsDir);
+    var files = fs.readdirSync(dir);
 
     for (let i = 0; i < files.length; i++) {
         var file = files[i]
-        var pathToFile = path.join(scriptsDir,file);
+        var pathToFile = path.join(dir,file);
         if(!fs.lstatSync(pathToFile).isDirectory()){
             var contents = fs.readFileSync(pathToFile, 'utf8');
 
@@ -43,11 +79,16 @@ function getSripsList(){
 
                 infoObj.fileName = file;
                 infoObj.altIcon = altIcon.iconReplace(infoObj.icon);
+                if(dir != scriptsDir) {
+                    infoObj.isExt = true;
+                }else{
+                    infoObj.isExt = false;
+                }
                 allScripts.push(infoObj)
             }
         }
     }
-    console.log("allScripts",allScripts);
+
     return allScripts;
 }
 
@@ -79,7 +120,13 @@ function executeSnippet(snippet){
         selectedStr = wholeValue;
         selected = false;
     }
-    var snippetPath = path.join(scriptsDir,snippet.fileName);
+    var snippetPath = "";
+    if(snippet.isExt){
+        var prefs = getPrefs();
+        snippetPath = path.join(prefs.customScriptFolder,snippet.fileName);
+    }else{
+        snippetPath = path.join(scriptsDir,snippet.fileName);
+    }
 
     var input = {};
     input.text = selectedStr;
@@ -131,6 +178,12 @@ function hideInput(){
     searchContainer.style.display="none";
     hoverDiv.style.display="none";
     searchField.value = "";
+}
+
+function chooseFolder(dir){
+    window.prefs.customScriptFolder = dir.filePaths[0].toString()
+    setPrefs(window.prefs)
+    console.log("Get Prefs >>", getPrefs());
 }
 
 /* -- event listeners */
@@ -204,8 +257,9 @@ ipc.on('key', (event, message) => {
             break;
 
         case 'ready':
-            window.scriptList = getSripsList();
+            window.scriptList = getScriptsList();
             restoreTitle();
+            window.prefs  = getPrefs();
             break;
 
         case 'hide-input':
@@ -214,6 +268,10 @@ ipc.on('key', (event, message) => {
             // window.editor.updateOptions({readOnly: true});
         case 'clear':
             window.editor.getModel().setValue("");
+            break;
+
+        case 'select-custom-scripts-folder':
+            chooseFolder(message["dir"]);
             break;
 
         default:
@@ -228,7 +286,6 @@ autocomplete({
     input: searchField,
     className: "autocomplete-container",
     render: function(item, currentValue) {
-        console.log("render", item, currentValue);
         var divContainer = document.createElement("div");
         divContainer.classList.add('suggest-item');
         var iconContainer = document.createElement("div");

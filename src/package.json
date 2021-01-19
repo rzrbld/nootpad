@@ -1,6 +1,6 @@
 {
   "name": "honk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "boop analog",
   "main": "main.js",
   "scripts": {
@@ -144,6 +144,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "animate.css": "^4.1.1",
     "autocompleter": "^6.1.0",
+    "electron-settings": "^4.0.2",
     "electron-squirrel-startup": "^1.0.0",
     "electron-window-state": "^5.0.3",
     "he": "^1.2.0",
