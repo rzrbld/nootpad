@@ -12,6 +12,10 @@
     "lint": "eslint src"
   },
   "author": "rzrbld",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/rzrbld/honk.git"
+  },
   "license": "MIT",
   "config": {
     "forge": {
@@ -40,6 +44,19 @@
           "platforms": [
             "linux"
           ]
+        },
+        {
+          "name": "@electron-forge/maker-snap",
+          "config": {
+            "appSlots": "[home, removable-media, raw-usb]",
+            "confinement":"classic",
+            "description": "Simple scratchpad. Kind a 'port' of Boop scratchpad for Linux and Windows platforms. Build with Electron and Monaco-editor.",
+            "features": {
+              "audio": "true",
+              "webgl": "true"
+            },
+            "summary": "Scratchpad"
+          }
         },
         {
           "name": "@electron-forge/maker-flatpak",
