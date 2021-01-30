@@ -56,7 +56,10 @@
               "webgl": "true"
             },
             "summary": "Scratchpad"
-          }
+          },
+          "platforms": [
+            "linux"
+          ]
         },
         {
           "name": "@electron-forge/maker-flatpak",
