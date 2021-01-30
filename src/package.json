@@ -46,6 +46,9 @@
           "config": {
             "name": "Honk",
             "options": {
+              "id": "ru.rzrbld.honk",
+              "productName": "Honk",
+              "description": "Scratchpad",
               "icon": {
                 "48x48": "icons/Icon-48.png",
                 "64x64": "icons/Icon-64.png",
