@@ -31,7 +31,6 @@ parts:
     plugin: nil
     override-build: |
         echo $SNAPCRAFT_PART_INSTALL
-        mv snap/* src/
         cd src
         pwd
         ls -al
