@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=honk
+Name=nootpad
 Comment=Simple scratchpad. Kind a 'port' of Boop scratchpad for Linux and Windows platforms. Build with Electron and Monaco-editor.
-Exec=honk %U
+Exec=nootpad %U
 Icon=${SNAP}/meta/gui/icon.png
 Type=Application
 StartupNotify=true

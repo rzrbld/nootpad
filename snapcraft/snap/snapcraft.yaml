@@ -1,4 +1,4 @@
-name: honk
+name: nootpad
 version: 1.1.0
 summary: Scratchpad
 description: >-
@@ -9,7 +9,7 @@ confinement: strict
 compression: lzo
 
 apps:
-  honk:
+  nootpad:
     extensions: [gnome-3-34]
     plugs:
     - browser-support
@@ -22,10 +22,10 @@ apps:
     - raw-usb
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
-    command: honk/honk --no-sandbox
+    command: nootpad/nootpad --no-sandbox
 parts:
-  honk:
-    source: https://github.com/rzrbld/honk.git
+  nootpad:
+    source: https://github.com/rzrbld/nootpad.git
     source-subdir: src/
     source-type: git
     plugin: nil
@@ -41,7 +41,7 @@ parts:
         npm install electron electron-packager
         npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
         ls -al
-        cp -rv ./honk-* $SNAPCRAFT_PART_INSTALL/honk
+        cp -rv ./nootpad-* $SNAPCRAFT_PART_INSTALL/nootpad
     build-snaps:
     - node/14/stable
     build-packages:
@@ -50,7 +50,7 @@ parts:
       - libnss3
       - libnspr4
     organize:
-      honk-linux-x64: honk
+      nootpad-linux-x64: nootpad
 base: core18
 plugs:
   browser-sandbox:
