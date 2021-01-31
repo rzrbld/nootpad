@@ -1,0 +1,62 @@
+name: honk
+version: 1.1.0
+summary: Scratchpad
+description: >-
+  Simple scratchpad. Kind a 'port' of Boop scratchpad for Linux and Windows
+  platforms. Build with Electron and Monaco-editor.
+grade: devel
+confinement: classic
+apps:
+  honk:
+    plugs:
+      - desktop
+      - desktop-legacy
+      - gsettings
+      - mount-observe
+      - network
+      - network-bind
+      - unity7
+      - x11
+      - pulseaudio
+      - opengl
+      - browser-sandbox
+    environment:
+      TMPDIR: $XDG_RUNTIME_DIR
+    command: bin/electron-launch '$SNAP/honk/honk'
+parts:
+  honk:
+    source: https://github.com/rzrbld/honk.git
+    source-subdir: src/
+    source-type: git
+    plugin: nil
+    override-build: |
+        echo $SNAPCRAFT_PART_INSTALL
+        cd src
+        pwd
+        ls -al
+        npm config set user 0
+        npm config set unsafe-perm true
+        npm install electron electron-packager
+        npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
+        ls -al
+        cp -rv ./honk-* $SNAPCRAFT_PART_INSTALL/honk
+    build-snaps:
+    - node/14/stable
+    build-packages:
+    - unzip
+    stage-packages:
+      - libnotify4
+      - libnss3
+      - libpcre3
+      - libxss1
+      - libxtst6
+      - pulseaudio
+      - libgl1-mesa-glx
+      - libglu1-mesa
+    organize:
+      honk-linux-x64: honk
+base: core18
+plugs:
+  browser-sandbox:
+    allow-sandbox: true
+    interface: browser-support
