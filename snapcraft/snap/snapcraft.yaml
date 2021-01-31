@@ -4,8 +4,10 @@ summary: Scratchpad
 description: >-
   Simple scratchpad. Kind a 'port' of Boop scratchpad for Linux and Windows
   platforms. Build with Electron and Monaco-editor.
-grade: devel
+grade: stable
 confinement: strict
+compression: lzo
+
 apps:
   honk:
     extensions: [gnome-3-34]
@@ -13,6 +15,11 @@ apps:
     - browser-support
     - network
     - network-bind
+    - home
+    - opengl
+    - x11
+    - removable-media
+    - raw-usb
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
     command: honk/honk --no-sandbox
