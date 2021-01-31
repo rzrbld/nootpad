@@ -44,7 +44,7 @@ parts:
       - libnspr4
     organize:
       honk-linux-x64: honk
-base: core20
+base: core18
 plugs:
   browser-sandbox:
     allow-sandbox: true
