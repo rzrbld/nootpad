@@ -8,21 +8,14 @@ grade: devel
 confinement: classic
 apps:
   honk:
+    extensions: [gnome-3-34]
     plugs:
-      - desktop
-      - desktop-legacy
-      - gsettings
-      - mount-observe
-      - network
-      - network-bind
-      - unity7
-      - x11
-      - pulseaudio
-      - opengl
-      - browser-sandbox
+    - browser-support
+    - network
+    - network-bind
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
-    command: $SNAP/honk/honk --no-sandbox
+    command: honk/honk --no-sandbox
 parts:
   honk:
     source: https://github.com/rzrbld/honk.git
@@ -47,17 +40,11 @@ parts:
     build-packages:
     - unzip
     stage-packages:
-      - libnotify4
       - libnss3
-      - libpcre3
-      - libxss1
-      - libxtst6
-      - pulseaudio
-      - libgl1-mesa-glx
-      - libglu1-mesa
+      - libnspr4
     organize:
       honk-linux-x64: honk
-base: core18
+base: core20
 plugs:
   browser-sandbox:
     allow-sandbox: true
