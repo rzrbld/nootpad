@@ -1,7 +1,7 @@
-# honk
+# Nootpad
  Simple scratchpad. Kind a "port" of [Boop](https://github.com/IvanMathy/Boop) for Linux and Windows platforms. Build with [Electron](https://github.com/electron/electron) and [Monaco-editor](https://microsoft.github.io/monaco-editor/).
 
- ![screenshot1](https://raw.githubusercontent.com/rzrbld/honk/main/images/screen.png)
+ ![screenshot1](https://raw.githubusercontent.com/rzrbld/nootpad/main/images/screen.png)
 
  by now:
  - literally the same build-in scripts
@@ -13,7 +13,7 @@ To install a new custom script - download or write your own `.js` file and put i
 
 ## how to write a snippet
 
-look at `src/scripts/Test.js`. In this case - only difference between [Honk](https://github.com/rzrbld/honk) and [Boop](https://github.com/IvanMathy/Boop) is:
+look at `src/scripts/Test.js`. In this case - only difference between [Nootpad](https://github.com/rzrbld/nootpad) and [Boop](https://github.com/IvanMathy/Boop) is:
 
 export declaration:
 ```

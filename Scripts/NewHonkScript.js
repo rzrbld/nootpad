@@ -1,11 +1,11 @@
 /**
 	{
 		"api":1,
-		"name":"New Honk Script",
-		"description":"Returns a basic Honk script.",
+		"name":"New Nootpad Script",
+		"description":"Returns a basic Nootpad script.",
 		"author":"tlewis, rzrbld",
 		"icon":"quote",
-		"tags":"honk,state,script,debug,new,create"
+		"tags":"nootpad,state,script,debug,new,create"
 	}
 **/
 
@@ -14,7 +14,7 @@ var script = `
 /**
 	{
 		"api":1,
-		"name":"New Boop Script",
+		"name":"New Nootpad Script",
 		"description":"What does your script do?",
 		"author":"Whooooooo are you?",
 		"icon":"broom",

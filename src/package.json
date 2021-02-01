@@ -1,5 +1,5 @@
 {
-  "name": "honk",
+  "name": "nootpad",
   "version": "1.1.0",
   "description": "boop analog",
   "main": "main.js",
@@ -14,26 +14,26 @@
   "author": "rzrbld",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rzrbld/honk.git"
+    "url": "https://github.com/rzrbld/nootpad.git"
   },
   "license": "MIT",
   "config": {
     "forge": {
       "electronPackagerConfig": {
-        "icon": "./icons/honk"
+        "icon": "./icons/nootpad"
       },
       "packagerConfig": {
         "extraResource": [
           "./scripts/",
           "./icons/"
         ],
-        "icon": "./icons/honk"
+        "icon": "./icons/nootpad"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-deb",
           "config": {
-            "name": "Honk",
+            "name": "Nootpad",
             "options": {
               "icon": "icons/Icon-512.png",
               "categories": [
@@ -48,6 +48,11 @@
         {
           "name": "@electron-forge/maker-snap",
           "config": {
+            "appSlots": [
+              "home",
+              "removable-media",
+              "raw-usb"
+            ],
             "confinement": "classic",
             "description": "Simple scratchpad. Kind a 'port' of Boop scratchpad for Linux and Windows platforms. Build with Electron and Monaco-editor.",
             "features": {
@@ -63,10 +68,10 @@
         {
           "name": "@electron-forge/maker-flatpak",
           "config": {
-            "name": "Honk",
+            "name": "Nootpad",
             "options": {
-              "id": "ru.rzrbld.honk",
-              "productName": "Honk",
+              "id": "ru.rzrbld.nootpad",
+              "productName": "Nootpad",
               "description": "Scratchpad",
               "icon": {
                 "48x48": "icons/Icon-48.png",
@@ -86,7 +91,7 @@
         {
           "name": "@electron-forge/maker-zip",
           "config": {
-            "name": "Honk"
+            "name": "Nootpad"
           },
           "platforms": [
             "darwin"
@@ -104,7 +109,7 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {
-            "name": "Honk"
+            "name": "Nootpad"
           },
           "platforms": [
             "none"
@@ -113,7 +118,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "Honk",
+            "name": "Nootpad",
             "authors": "rzrbld",
             "description": "scratchpad"
           },
@@ -124,8 +129,8 @@
         {
           "name": "@electron-forge/maker-appx",
           "config": {
-            "packageName": "Honk",
-            "name": "Honk"
+            "packageName": "Nootpad",
+            "name": "Nootpad"
           },
           "platforms": [
             "none"
@@ -136,7 +141,7 @@
         {
           "config": {
             "repository": {
-              "name": "honk",
+              "name": "nootpad",
               "owner": "rzrbld"
             }
           },
@@ -156,12 +161,12 @@
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
     "@electron-forge/maker-dmg": "^6.0.0-beta.54",
     "@electron-forge/maker-flatpak": "^6.0.0-beta.54",
-    "@electron-forge/maker-snap": "^6.0.0-beta.54",
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "@electron-forge/publisher-github": "^6.0.0-beta.54",
-    "electron": "^11.1.1"
+    "electron": "^11.1.1",
+    "electron-installer-snap": "^5.1.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",

@@ -12,8 +12,8 @@ function createWindow () {
   });
 
   const win = new BrowserWindow({
-    title: 'Honk',
-    icon: path.join(__dirname, "icons/honk.png"),
+    title: 'Nootpad',
+    icon: path.join(__dirname, "icons/nootpad.png"),
     x: mainWindowStateKeeper.x,
     y: mainWindowStateKeeper.y,
     width: mainWindowStateKeeper.width,
@@ -51,7 +51,7 @@ function createWindow () {
 
 function createMenu(win){
   menu.append(new MenuItem({
-    label: 'Honk',
+    label: 'Nootpad',
     submenu: [
       {
         role: 'about',
