@@ -30,7 +30,7 @@ parts:
     source-type: git
     plugin: nil
     build-environment:
-      - ELECTRON_GET_USE_PROXY: true
+      - ELECTRON_GET_USE_PROXY: "1"
     override-build: |
         echo $SNAPCRAFT_PART_INSTALL
         echo "Proxy is:"
