@@ -29,21 +29,23 @@ parts:
     source-subdir: src/
     source-type: git
     plugin: nil
-    build-environment:
-      - ELECTRON_GET_USE_PROXY: "1"
     override-build: |
         echo $SNAPCRAFT_PART_INSTALL
-        echo "Proxy is:"
-        echo $ELECTRON_GET_USE_PROXY
         ls -al
         mv snapcraft/* src/
         cd src
         pwd
         ls -al
-        echo "npm install >>>>>>"
-        npm install
         npm config set user 0
         npm config set unsafe-perm true
+        echo "WORKAROUND >>>"
+        # workaround for build.snapcraft.io builds
+        # https://bugs.launchpad.net/bugs/1886861
+        if [ -n "$http_proxy" ]; then
+          export ELECTRON_GET_USE_PROXY=1
+          export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
+          export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
+        fi
         npm install electron electron-packager
         npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
         ls -al
