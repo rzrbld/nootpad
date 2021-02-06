@@ -36,6 +36,7 @@ parts:
         cd src
         pwd
         ls -al
+        echo "npm install >>>>>>"
         npm install
         npm config set user 0
         npm config set unsafe-perm true
