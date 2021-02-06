@@ -29,8 +29,12 @@ parts:
     source-subdir: src/
     source-type: git
     plugin: nil
+    build-environment:
+      - ELECTRON_GET_USE_PROXY: 1
     override-build: |
         echo $SNAPCRAFT_PART_INSTALL
+        echo "Proxy is:"
+        echo $ELECTRON_GET_USE_PROXY
         ls -al
         mv snapcraft/* src/
         cd src
