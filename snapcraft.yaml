@@ -20,6 +20,8 @@ apps:
     - x11
     - removable-media
     - raw-usb
+    - desktop
+    - desktop-legacy
     environment:
       TMPDIR: $XDG_RUNTIME_DIR
     command: nootpad/nootpad --no-sandbox
@@ -62,5 +64,5 @@ parts:
 base: core18
 plugs:
   browser-sandbox:
-    allow-sandbox: true
+    allow-sandbox: false
     interface: browser-support
