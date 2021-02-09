@@ -1,11 +1,19 @@
 # Nootpad
+
+[![nootpad](https://snapcraft.io/nootpad/badge.svg)](https://snapcraft.io/nootpad)
+[![nootpad](https://snapcraft.io/nootpad/trending.svg?name=0)](https://snapcraft.io/nootpad)
+
  Simple scratchpad. Kind a "port" of [Boop](https://github.com/IvanMathy/Boop) for Linux and Windows platforms. Build with [Electron](https://github.com/electron/electron) and [Monaco-editor](https://microsoft.github.io/monaco-editor/).
+
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/nootpad)
+
 
  ![screenshot1](https://raw.githubusercontent.com/rzrbld/nootpad/main/images/screen.png)
 
  by now:
- - literally the same build-in scripts
+ - the same build-in scripts
  - user scripts support
+ - milti cursor input
  
 ## installing scripts
 
